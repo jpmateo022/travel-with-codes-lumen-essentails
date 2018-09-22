@@ -31,16 +31,15 @@ class MyFirstAPIController extends Controller
         catch(Exception $e){
             return response()->json([
                 'status_code'=>400,
-                'status_message'=>$e->getMessage();
+                'status_message'=>$e->getMessage()
             ],400);
         }
         //
     }
     
-    public function get_item(Request $r)
+    public function get_item(Request $r,$id)
     {
         try{
-            $id = $r->get('id');
             $item = $this->my_firstapi->get_item($id);
             
             return response()->json([
@@ -52,16 +51,15 @@ class MyFirstAPIController extends Controller
         catch(Exception $e){
             return response()->json([
                 'status_code'=>400,
-                'status_message'=>$e->getMessage();
+                'status_message'=>$e->getMessage()
             ],400);
         }
         //
     }
     
-    public function delete_item(Request $r)
+    public function delete_item(Request $r,$id)
     {
         try{
-            $id = $r->get('id');
             $this->my_firstapi->delete_item($id);
             
             return response()->json([
@@ -72,18 +70,17 @@ class MyFirstAPIController extends Controller
         catch(Exception $e){
             return response()->json([
                 'status_code'=>400,
-                'status_message'=>$e->getMessage();
+                'status_message'=>$e->getMessage()
             ],400);
         }
         //
     }
 
-    public function update_item(Request $r)
+    public function update_item(Request $r,$id)
     {
         try{
-            $id = $r->get('id');
-            $title = $r->get('id');
-            $body = $r->get('id');
+            $title = $r->get('title');
+            $body = $r->get('body');
             $this->my_firstapi->update_item($id,$title,$body);
             
             return response()->json([
@@ -94,7 +91,7 @@ class MyFirstAPIController extends Controller
         catch(Exception $e){
             return response()->json([
                 'status_code'=>400,
-                'status_message'=>$e->getMessage();
+                'status_message'=>$e->getMessage()
             ],400);
         }
         //
@@ -103,8 +100,8 @@ class MyFirstAPIController extends Controller
     public function create_item(Request $r)
     {
         try{
-            $title = $r->get('id');
-            $body = $r->get('id');
+            $title = $r->get('title');
+            $body = $r->get('body');
             $this->my_firstapi->create_item($title,$body);
             
             return response()->json([
@@ -115,7 +112,7 @@ class MyFirstAPIController extends Controller
         catch(Exception $e){
             return response()->json([
                 'status_code'=>400,
-                'status_message'=>$e->getMessage();
+                'status_message'=>$e->getMessage()
             ],400);
         }
         //
